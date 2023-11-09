@@ -1,3 +1,20 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next",
+    "next/core-web-vitals"
+  ],
+  "rules": {
+    "max-depth": ["warn", 2],
+    "prettier/prettier": ["error"],
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react/function-component-definition": [
+      "error",
+      { "namedComponents": "arrow-function" }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "max-lines": ["error", 200]
+  }
 }
