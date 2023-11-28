@@ -1,9 +1,14 @@
 interface IButton {
   name: string;
+  onClick: () => void;
 }
 
-const Button = ({ name }: IButton) => {
-  return <button type="button">{name}</button>;
+const Button = ({ name, onClick }: IButton) => {
+  return (
+    <button type="button" onClick={onClick}>
+      {name}
+    </button>
+  );
 };
 
 export default Button;

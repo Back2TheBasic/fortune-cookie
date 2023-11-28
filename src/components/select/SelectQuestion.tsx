@@ -1,6 +1,6 @@
 import Button from '../Button';
 import Title from '../Title';
-import styles from './SelectQuestion.scss';
+import styles from './SelectQuestion.module.scss';
 
 const SelectQuestion = () => {
   const questions: string[] = ['질문1', '질문2', '질문3'];
