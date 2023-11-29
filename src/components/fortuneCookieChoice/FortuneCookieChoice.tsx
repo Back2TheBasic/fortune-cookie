@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
 import style from './FortuneCookieChoice.module.scss';

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import FortuneCookieResult from '@/components/fortuneCookie/FortuneCookie';
 import FortuneCookieChoice from '@/components/fortuneCookieChoice/FortuneCookieChoice';
 

@@ -1,5 +1,4 @@
 import Title from '@/components/title/Title';
-import React from 'react';
 import Button from '@/components/button/Button';
 import style from './FortuneCookie.module.scss';
 
