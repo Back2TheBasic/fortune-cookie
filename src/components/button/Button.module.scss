@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  &:hover {
+    background-color: aliceblue;
+    color: blue;
+  }
+}
+
+.button__circle {
+  border-radius: 50%;
+}
