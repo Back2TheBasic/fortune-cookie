@@ -1,12 +1,13 @@
-import React from "react";
-import Button from "@/components/button/Button";
-import style from "./SelectedCookies.module.scss";
-import Title from "@/components/title/Title";
-interface SelectedCookiesProps {
+import React from 'react';
+import Button from '@/components/button/Button';
+import Title from '@/components/title/Title';
+import style from './FortuneCookieChoice.module.scss';
+
+interface ISelectedCookiesProps {
   selectedCookie: (cookie: number) => void;
 }
-const SelectedCookies = ({ selectedCookie }: SelectedCookiesProps) => {
-  const buttons = ["선택1", "선택2", "선택3"];
+const FortuneCookieChoice = ({ selectedCookie }: ISelectedCookiesProps) => {
+  const buttons = ['선택1', '선택2', '선택3'];
 
   return (
     <div className={style.container}>
@@ -16,8 +17,8 @@ const SelectedCookies = ({ selectedCookie }: SelectedCookiesProps) => {
       <div className={style.button_container}>
         {buttons.map((buttonText, index) => (
           <Button
-            key={index}
-            type="circle"
+            key={buttonText}
+            shape="circle"
             onClick={selectedCookie.bind(this, index + 1)}
           >
             {buttonText}
@@ -28,4 +29,4 @@ const SelectedCookies = ({ selectedCookie }: SelectedCookiesProps) => {
   );
 };
 
-export default SelectedCookies;
+export default FortuneCookieChoice;

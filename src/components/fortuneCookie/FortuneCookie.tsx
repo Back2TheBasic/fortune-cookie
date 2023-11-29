@@ -1,13 +1,13 @@
-import Title from "@/components/title/Title";
-import React from "react";
-import style from "./SelectedConcern.module.scss";
-import Button from "@/components/button/Button";
+import Title from '@/components/title/Title';
+import React from 'react';
+import Button from '@/components/button/Button';
+import style from './FortuneCookie.module.scss';
 
-interface SelectedConcernProps {
+interface ISelectedConcernProps {
   goback: (index: number) => void;
 }
 
-const SelectedConcern = ({ goback }: SelectedConcernProps) => {
+const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
   return (
     <div className={style.container}>
       <header>
@@ -19,13 +19,11 @@ const SelectedConcern = ({ goback }: SelectedConcernProps) => {
           좋겠습니다.
         </p>
         <div className={style.button_container}>
-          <Button type="default" onClick={goback.bind(this, 0)}>
-            다시하기
-          </Button>
+          <Button onClick={goback.bind(this, 0)}>다시하기</Button>
         </div>
       </form>
     </div>
   );
 };
 
-export default SelectedConcern;
+export default FortuneCookie;

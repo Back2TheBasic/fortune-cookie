@@ -1,4 +1,5 @@
-import ResultClient from "./ResultClient";
+import ResultClient from './ResultClient';
+
 const Result = () => {
   return <ResultClient />;
 };

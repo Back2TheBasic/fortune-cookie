@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import SelectedConcern from "./selectedConcern/SelectedConcern";
-import SelectedCookies from "./selectedCookies/SelectedCookies";
+import React, { useState } from 'react';
+import FortuneCookieResult from '@/components/fortuneCookie/FortuneCookie';
+import FortuneCookieChoice from '@/components/fortuneCookieChoice/FortuneCookieChoice';
+
 const ResultClient = () => {
   const [selectedCookie, setSelectedCookie] = useState(0);
   const selectCookie = (cookie: number) => {
@@ -11,9 +12,9 @@ const ResultClient = () => {
   return (
     <div>
       {selectedCookie ? (
-        <SelectedConcern goback={selectCookie} />
+        <FortuneCookieResult goback={selectCookie} />
       ) : (
-        <SelectedCookies selectedCookie={selectCookie} />
+        <FortuneCookieChoice selectedCookie={selectCookie} />
       )}
     </div>
   );

@@ -1,11 +1,12 @@
-import { ReactNode } from "react";
-interface TitleProps {
+import { ReactNode } from 'react';
+import style from './Title.module.scss';
+
+interface ITitleProps {
   children: ReactNode;
 }
-import style from "./Title.module.scss";
 
-const Title = ({ children }: TitleProps) => {
-  return <div className={style.title}>{children}</div>;
+const Title = ({ children }: ITitleProps) => {
+  return <h1 className={style.title}>{children}</h1>;
 };
 
 export default Title;
