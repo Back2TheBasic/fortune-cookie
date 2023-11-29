@@ -1,9 +1,9 @@
 'use client';
 
-import SelectCategory from '@/components/select/SelectCategory';
-import SelectQuestion from '@/components/select/SelectQuestion';
-import { selectSelectedCategory } from '@/store/slice/selectSlice';
 import { useSelector } from 'react-redux';
+import { selectSelectedCategory } from '@/store/slice/selectSlice';
+import SelectCategory from '@/components/select-category/SelectCategory';
+import SelectQuestion from '@/components/select-question/SelectQuestion';
 
 const SelectClient = () => {
   const selectedCategory = useSelector(selectSelectedCategory);

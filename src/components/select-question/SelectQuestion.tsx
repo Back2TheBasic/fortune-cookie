@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
-import Button from '../Button';
-import Title from '../Title';
+import Button from '@/components/button/Button';
+import Title from '@/components/title/Title';
 import styles from './SelectQuestion.module.scss';
 
 const SelectQuestion = () => {
@@ -13,14 +13,12 @@ const SelectQuestion = () => {
 
   return (
     <>
-      <Title title="고민 선택" />
+      <Title>고민 선택</Title>
       {questions.map((question) => {
         return (
-          <Button
-            onClick={() => selectQuestion(question)}
-            key={question}
-            name={question}
-          />
+          <Button onClick={() => selectQuestion(question)} key={question}>
+            {question}
+          </Button>
         );
       })}
       <button type="button">새로고침</button>

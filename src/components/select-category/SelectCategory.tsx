@@ -1,7 +1,7 @@
-import { SELECT_CATEGORY } from '@/store/slice/selectSlice';
 import { useDispatch } from 'react-redux';
-import Button from '../Button';
-import Title from '../Title';
+import { SELECT_CATEGORY } from '@/store/slice/selectSlice';
+import Button from '@/components/button/Button';
+import Title from '@/components/title/Title';
 
 const SelectCategory = () => {
   const dispatch = useDispatch();
@@ -22,14 +22,12 @@ const SelectCategory = () => {
 
   return (
     <>
-      <Title title="카테고리 선택" />
+      <Title>카테고리 선택</Title>
       {categories.map((category) => {
         return (
-          <Button
-            onClick={() => selectCategory(category)}
-            key={category}
-            name={category}
-          />
+          <Button onClick={() => selectCategory(category)} key={category}>
+            {category}
+          </Button>
         );
       })}
     </>
