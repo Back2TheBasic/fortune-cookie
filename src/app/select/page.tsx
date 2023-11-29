@@ -1,5 +1,7 @@
+import SelectClient from './SelectClient';
+
 const Select = () => {
-  return <div>Select</div>;
+  return <SelectClient />;
 };
 
 export default Select;

@@ -23,7 +23,6 @@
         "ts": "never",
         "tsx": "never"
       }
-    ],
     "import/no-extraneous-dependencies": "off",
     "react/jsx-no-bind": "off"
   }
