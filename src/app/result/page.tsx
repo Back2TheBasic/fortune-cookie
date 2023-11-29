@@ -1,5 +1,7 @@
+import ResultClient from './ResultClient';
+
 const Result = () => {
-  return <div>Result</div>;
+  return <ResultClient />;
 };
 
 export default Result;

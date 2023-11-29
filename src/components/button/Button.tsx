@@ -1,11 +1,21 @@
+'use client';
+
+import { ReactNode } from 'react';
+import style from './Button.module.scss';
+
 interface IButtonProps {
+  children: ReactNode;
   onClick: () => void;
-  children: React.ReactNode;
+  shape: string;
 }
 
-const Button = ({ onClick, children }: IButtonProps) => {
+const Button = ({ shape = 'default', children, onClick }: IButtonProps) => {
   return (
-    <button type="button" onClick={onClick}>
+    <button
+      type="button"
+      className={`${style.button} ${style[`button__${shape}`]}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
