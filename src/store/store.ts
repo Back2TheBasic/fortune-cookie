@@ -1,10 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import selectReducer from './slice/selectSlice';
 
+const rootReducer = combineReducers({
+  select: selectReducer,
+});
+
 const store = configureStore({
-  reducer: {
-    select: selectReducer,
-  },
+  reducer: rootReducer,
 });
 
 export default store;
+
+export type RootState = ReturnType<typeof rootReducer>;

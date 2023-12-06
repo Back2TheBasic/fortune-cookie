@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import type { RootState } from '../store';
 
 export interface SelectState {
   selectedCategory: string;
@@ -22,6 +23,7 @@ export const selectSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { SELECT_CATEGORY } = selectSlice.actions;
 
-export const selectSelectedCategory = (state) => state.select.selectedCategory;
+export const selectSelectedCategory = (state: RootState) =>
+  state.select.selectedCategory;
 
 export default selectSlice.reducer;
