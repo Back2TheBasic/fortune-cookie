@@ -1,16 +1,16 @@
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectSelectedCategory } from '@/store/slice/selectSlice';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
 import questions from '@/assets/data/questions.json';
 import styles from './SelectQuestion.module.scss';
-import { useState } from 'react';
 
 const SelectQuestion = () => {
   const router = useRouter();
 
-  const selectedCategory: string = useSelector(selectSelectedCategory);
+  const selectedCategory = useSelector(selectSelectedCategory);
   const categoryQuestions = questions[selectedCategory];
   const questionsPerPage: number = 5;
   const [questionIndex, setQuestionIndex] = useState(0);

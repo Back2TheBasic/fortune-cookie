@@ -1,22 +1,14 @@
 import { useDispatch } from 'react-redux';
 import { SELECT_CATEGORY } from '@/store/slice/selectSlice';
+import { categories } from '@/utils/const';
+import { TCategory } from '@/types/type';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
 
 const SelectCategory = () => {
   const dispatch = useDispatch();
 
-  const categories: string[] = [
-    '취업',
-    '학업',
-    '연애',
-    '건강',
-    '가족',
-    '인간관계',
-    '재물/돈',
-    '종합',
-  ];
-  const selectCategory = (category: string) => {
+  const selectCategory = (category: TCategory) => {
     dispatch(SELECT_CATEGORY(category));
   };
 
