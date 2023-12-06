@@ -1,20 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
+import { TCategory } from '@/types/type';
 
-export interface SelectState {
-  selectedCategory: string;
-}
-
-const initialState: SelectState = {
-  selectedCategory: '',
+const initialState = {
+  selectedCategory: '' as TCategory,
 };
 
 export const selectSlice = createSlice({
   name: 'select',
   initialState,
   reducers: {
-    SELECT_CATEGORY: (state, action: PayloadAction<string>) => {
+    SELECT_CATEGORY: (state, action: PayloadAction<TCategory>) => {
       state.selectedCategory = action.payload;
     },
   },
