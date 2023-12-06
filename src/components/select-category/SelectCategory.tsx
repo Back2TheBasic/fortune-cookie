@@ -25,7 +25,11 @@ const SelectCategory = () => {
       <Title>카테고리 선택</Title>
       {categories.map((category) => {
         return (
-          <Button onClick={() => selectCategory(category)} key={category}>
+          <Button
+            onClick={() => selectCategory(category)}
+            key={category}
+            shape="default"
+          >
             {category}
           </Button>
         );
