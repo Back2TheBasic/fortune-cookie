@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import FortuneCookieResult from '@/components/fortuneCookie/FortuneCookie';
-import FortuneCookieChoice from '@/components/fortuneCookieChoice/FortuneCookieChoice';
+import FortuneCookieResult from '@/components/fortune-cookie/FortuneCookie';
+import FortuneCookieChoice from '@/components/fortune-cookie-choice/FortuneCookieChoice';
 
 const ResultClient = () => {
   const [selectedCookie, setSelectedCookie] = useState(0);
