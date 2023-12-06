@@ -1,12 +1,24 @@
 import Title from '@/components/title/Title';
 import Button from '@/components/button/Button';
 import style from './FortuneCookie.module.scss';
+import { useEffect } from 'react';
+import { shareKakao } from '@/utils/shareKakao';
 
 interface ISelectedConcernProps {
   goback: (index: number) => void;
 }
 
 const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
+  const { Kakao } = window as any;
+
+  const kakaoShare = () => {
+    shareKakao(Kakao);
+  };
+  useEffect(() => {
+    Kakao.cleanup();
+    Kakao.init('96ccf9d7fcfcec02729609d322b9e086');
+  }, []);
+
   return (
     <div className={style.container}>
       <header>
@@ -19,6 +31,7 @@ const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
         </p>
         <div className={style.button_container}>
           <Button onClick={goback.bind(this, 0)}>다시하기</Button>
+          <Button onClick={kakaoShare}>카카오</Button>
         </div>
       </form>
     </div>
