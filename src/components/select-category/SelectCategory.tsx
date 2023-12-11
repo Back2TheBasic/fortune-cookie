@@ -22,7 +22,7 @@ const SelectCategory = () => {
             <Button
               onClick={() => selectCategory(category)}
               key={category}
-              shape="rect"
+              shape="short"
             >
               {category}
             </Button>
