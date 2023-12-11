@@ -5,8 +5,8 @@ import style from './Button.module.scss';
 
 interface IButtonProps {
   children: ReactNode;
-  onClick: () => void;
-  shape: string;
+  onClick?: () => void;
+  shape?: string;
 }
 
 const Button = ({ shape = 'default', children, onClick }: IButtonProps) => {
