@@ -13,7 +13,7 @@ const Button = ({ shape = 'default', children, onClick }: IButtonProps) => {
   return (
     <button
       type="button"
-      className={`${style.button} ${style[`button__${shape}`]}`}
+      className={`${style.button} ${style[`button--${shape}`]}`}
       onClick={onClick}
     >
       {children}

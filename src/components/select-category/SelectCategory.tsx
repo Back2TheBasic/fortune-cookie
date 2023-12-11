@@ -4,6 +4,7 @@ import { categories } from '@/utils/const';
 import { TCategory } from '@/types/type';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
+import styles from './SelectCategory.module.scss';
 
 const SelectCategory = () => {
   const dispatch = useDispatch();
@@ -15,17 +16,19 @@ const SelectCategory = () => {
   return (
     <>
       <Title>카테고리 선택</Title>
-      {categories.map((category) => {
-        return (
-          <Button
-            onClick={() => selectCategory(category)}
-            key={category}
-            shape="default"
-          >
-            {category}
-          </Button>
-        );
-      })}
+      <section className={styles['category__container']}>
+        {categories.map((category) => {
+          return (
+            <Button
+              onClick={() => selectCategory(category)}
+              key={category}
+              shape="rect"
+            >
+              {category}
+            </Button>
+          );
+        })}
+      </section>
     </>
   );
 };
