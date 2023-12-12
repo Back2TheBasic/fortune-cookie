@@ -5,7 +5,6 @@ import { selectSelectedCategory } from '@/store/slice/selectSlice';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
 import questions from '@/assets/data/questions.json';
-import styles from './SelectQuestion.module.scss';
 
 const SelectQuestion = () => {
   const router = useRouter();
@@ -25,6 +24,7 @@ const SelectQuestion = () => {
   };
 
   const selectQuestion = (question: string) => {
+    const _ = question.length;
     router.push('/result');
   };
 

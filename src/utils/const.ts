@@ -1,4 +1,4 @@
-export const categories = [
+const categories = [
   '취업',
   '학업',
   '연애',
@@ -8,3 +8,5 @@ export const categories = [
   '재물/돈',
   '종합',
 ] as const;
+
+export default categories;

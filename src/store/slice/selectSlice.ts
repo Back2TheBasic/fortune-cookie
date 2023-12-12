@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
 import { TCategory } from '@/types/type';
+import type { RootState } from '../store';
 
 const initialState = {
   selectedCategory: '' as TCategory,
