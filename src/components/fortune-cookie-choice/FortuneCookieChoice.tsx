@@ -1,12 +1,29 @@
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
 import style from './FortuneCookieChoice.module.scss';
-
+import Image from 'next/image';
+import fortuneCookie from '@/assets/before-fortune-cookie.png';
+import afterFortuneCookie from '@/assets/after-fortune-cookie.png';
+import { useEffect, useState } from 'react';
+import { usePlaySound } from '@/utils/sounds';
 interface ISelectedCookiesProps {
   selectedCookie: (cookie: number) => void;
 }
 const FortuneCookieChoice = ({ selectedCookie }: ISelectedCookiesProps) => {
-  const buttons = ['선택1', '선택2', '선택3'];
+  const [buttons, setButtons] = useState([
+    fortuneCookie,
+    fortuneCookie,
+    fortuneCookie,
+  ]);
+  const playSound = usePlaySound('/audio/cookie.mp3');
+
+  const onClickImage = (index: number) => {
+    if (buttons[index] !== afterFortuneCookie) playSound();
+
+    setButtons(
+      buttons.map((button, i) => (i === index ? afterFortuneCookie : button))
+    );
+  };
 
   return (
     <div className={style.container}>
@@ -14,14 +31,15 @@ const FortuneCookieChoice = ({ selectedCookie }: ISelectedCookiesProps) => {
         <Title>쿠키를 선택해주세요</Title>
       </header>
       <div className={style.button_container}>
-        {buttons.map((buttonText, index) => (
-          <Button
-            key={buttonText}
-            shape="circle"
-            onClick={selectedCookie.bind(this, index + 1)}
-          >
-            {buttonText}
-          </Button>
+        {buttons.map((buttonImg, index) => (
+          <Image
+            key={index}
+            src={buttonImg}
+            alt="fortune cookie image"
+            onClick={onClickImage.bind(this, index)}
+            width={300}
+            height={300}
+          />
         ))}
       </div>
     </div>
