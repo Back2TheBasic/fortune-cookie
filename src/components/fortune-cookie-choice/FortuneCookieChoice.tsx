@@ -5,7 +5,6 @@ import afterFortuneCookie from '@/assets/after-fortune-cookie.png';
 import { useState } from 'react';
 import usePlaySound from '@/utils/sounds';
 import style from './FortuneCookieChoice.module.scss';
-
 interface ISelectedCookiesProps {
   selectedCookie: (cookie: number) => void;
 }
