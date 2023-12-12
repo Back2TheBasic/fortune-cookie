@@ -22,7 +22,7 @@ const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
   };
   useEffect(() => {
     Kakao.cleanup();
-    Kakao.init('96ccf9d7fcfcec02729609d322b9e086');
+    Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
   }, []);
 
   return (
