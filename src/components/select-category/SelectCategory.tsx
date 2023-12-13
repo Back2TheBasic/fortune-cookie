@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { SELECT_CATEGORY } from '@/store/slice/selectSlice';
-import { categories } from '@/utils/const';
+import categories from '@/utils/const';
 import { TCategory } from '@/types/type';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
