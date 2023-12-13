@@ -16,7 +16,7 @@ const SelectQuestion = () => {
 
   const refreshQuestions = () => {
     if (
-      questionIndex / questionsPerPage + 1 ===
+      questionIndex / questionsPerPage + 1 >=
       categoryQuestions.length / questionsPerPage
     )
       setQuestionIndex(0);
@@ -31,22 +31,28 @@ const SelectQuestion = () => {
   return (
     <>
       <Title>{selectedCategory} 고민 선택</Title>
-      {categoryQuestions
-        .slice(questionIndex, questionIndex + questionsPerPage)
-        .map((question: string) => {
-          return (
-            <Button
-              onClick={() => selectQuestion(question)}
-              key={question}
-              shape="default"
-            >
-              {question}
-            </Button>
-          );
-        })}
-      <button type="button" onClick={refreshQuestions}>
+      <section className={styles['question__container']}>
+        {categoryQuestions
+          .slice(questionIndex, questionIndex + questionsPerPage)
+          .map((question: string) => {
+            return (
+              <Button
+                onClick={() => selectQuestion(question)}
+                key={question}
+                shape="default"
+              >
+                {question}
+              </Button>
+            );
+          })}
+      </section>
+      <button
+        type="button"
+        onClick={refreshQuestions}
+        className={styles['question__refresh-btn']}
+      >
         새로고침 {questionIndex / questionsPerPage + 1}/
-        {categoryQuestions.length / questionsPerPage}
+        {Math.ceil(categoryQuestions.length / questionsPerPage)}
       </button>
     </>
   );

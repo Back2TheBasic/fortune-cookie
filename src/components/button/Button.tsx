@@ -5,15 +5,15 @@ import style from './Button.module.scss';
 
 interface IButtonProps {
   children: ReactNode;
-  onClick: () => void;
-  shape: string;
+  onClick?: () => void;
+  shape?: string;
 }
 
 const Button = ({ shape = 'default', children, onClick }: IButtonProps) => {
   return (
     <button
       type="button"
-      className={`${style.button} ${style[`button__${shape}`]}`}
+      className={`${style.button} ${style[`button--${shape}`]}`}
       onClick={onClick}
     >
       {children}
