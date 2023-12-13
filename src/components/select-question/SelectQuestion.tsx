@@ -17,7 +17,7 @@ const SelectQuestion = () => {
 
   const refreshQuestions = () => {
     if (
-      questionIndex / questionsPerPage + 1 ===
+      questionIndex / questionsPerPage + 1 >=
       categoryQuestions.length / questionsPerPage
     )
       setQuestionIndex(0);
@@ -52,7 +52,7 @@ const SelectQuestion = () => {
         className={styles['question__refresh-btn']}
       >
         새로고침 {questionIndex / questionsPerPage + 1}/
-        {categoryQuestions.length / questionsPerPage}
+        {Math.ceil(categoryQuestions.length / questionsPerPage)}
       </button>
     </>
   );
