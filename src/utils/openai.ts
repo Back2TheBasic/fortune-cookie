@@ -56,4 +56,4 @@ const getFortune = async (fortune: string) => {
   return completion?.choices[0]?.message?.content;
 };
 
-export { getFortune };
+export default getFortune;
