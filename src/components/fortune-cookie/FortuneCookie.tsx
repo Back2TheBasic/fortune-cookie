@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable dot-notation */
 import Title from '@/components/title/Title';
 import Button from '@/components/button/Button';
+import { useEffect } from 'react';
+import shareKakao from '@/utils/shareKakao';
 import style from './FortuneCookie.module.scss';
 
 interface ISelectedConcernProps {
@@ -7,6 +11,18 @@ interface ISelectedConcernProps {
 }
 
 const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
+  const { Kakao } = window as any;
+
+  const kakaoShare = () => {
+    shareKakao(Kakao);
+  };
+  useEffect(() => {
+    Kakao.cleanup();
+    Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
+    // TODO : eslint 오류 해결하기
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={style.container}>
       <header>
@@ -19,6 +35,7 @@ const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
         </p>
         <div className={style.button_container}>
           <Button onClick={goback.bind(this, 0)}>다시하기</Button>
+          <Button onClick={kakaoShare}>카카오</Button>
         </div>
       </form>
     </div>

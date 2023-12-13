@@ -31,7 +31,7 @@ const SelectQuestion = () => {
   return (
     <>
       <Title>{selectedCategory} 고민 선택</Title>
-      <section className={styles['question__container']}>
+      <section className={styles.question__container}>
         {categoryQuestions
           .slice(questionIndex, questionIndex + questionsPerPage)
           .map((question: string) => {

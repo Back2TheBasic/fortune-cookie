@@ -1,3 +1,5 @@
+// TODO : eslint 오류 해결하기
+/* eslint-disable dot-notation */
 import { useDispatch } from 'react-redux';
 import { SELECT_CATEGORY } from '@/store/slice/selectSlice';
 import categories from '@/utils/const';
