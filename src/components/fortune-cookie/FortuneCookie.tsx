@@ -1,14 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable dot-notation */
 import Title from '@/components/title/Title';
 import Button from '@/components/button/Button';
-import style from './FortuneCookie.module.scss';
 import { useEffect } from 'react';
-import { shareKakao } from '@/utils/shareKakao';
-import {
-  LineShareButton,
-  LineIcon,
-  FacebookShareButton,
-  FacebookIcon,
-} from 'next-share';
+import shareKakao from '@/utils/shareKakao';
+import style from './FortuneCookie.module.scss';
 
 interface ISelectedConcernProps {
   goback: (index: number) => void;
@@ -23,6 +19,8 @@ const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
+    // TODO : eslint 오류 해결하기
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -38,22 +36,6 @@ const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
         <div className={style.button_container}>
           <Button onClick={goback.bind(this, 0)}>다시하기</Button>
           <Button onClick={kakaoShare}>카카오</Button>
-          <LineShareButton
-            url={'https://github.com/next-share'}
-            title={
-              'next-share is a social share buttons for your next React apps.'
-            }
-          >
-            <LineIcon />
-          </LineShareButton>
-          <FacebookShareButton
-            url={'https://github.com/next-share'}
-            title={
-              'next-share is a social share buttons for your next React apps.'
-            }
-          >
-            <FacebookIcon />
-          </FacebookShareButton>
         </div>
       </form>
     </div>

@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-
-export const shareKakao = (Kakao: any) => {
+// TODO : eslint 오류 해결하기
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const shareKakao = (Kakao: any) => {
   return Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
@@ -69,3 +69,5 @@ export const shareKakao = (Kakao: any) => {
     ],
   });
 };
+
+export default shareKakao;

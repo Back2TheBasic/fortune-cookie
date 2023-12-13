@@ -1,3 +1,6 @@
+// TODO : eslint 오류 해결하기
+/* eslint-disable react/require-default-props */
+
 'use client';
 
 import { ReactNode } from 'react';
