@@ -1,15 +1,17 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectSelectedCategory } from '@/store/slice/selectSlice';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
 import questions from '@/assets/data/questions.json';
+import getFortune from '@/utils/openai';
+import { SAVE_RESULT } from '@/store/slice/resultSlice';
 import styles from './SelectQuestion.module.scss';
 
 const SelectQuestion = () => {
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const selectedCategory = useSelector(selectSelectedCategory);
   const categoryQuestions = questions[selectedCategory];
   const questionsPerPage: number = 5;
@@ -24,8 +26,10 @@ const SelectQuestion = () => {
     else setQuestionIndex(questionIndex + questionsPerPage);
   };
 
-  const selectQuestion = (question: string) => {
-    const _ = question.length;
+  const selectQuestion = async (question: string) => {
+    const newData = await getFortune(question);
+    dispatch(SAVE_RESULT(newData as string));
+
     router.push('/result');
   };
 
