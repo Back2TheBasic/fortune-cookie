@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import styles from './loading.module.scss';
 import { RotatingLines } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from '@/store/slice/loadingSlice';
+import styles from './loading.module.scss';
 
 const Loading = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -19,7 +19,7 @@ const Loading = () => {
               strokeWidth="5"
               animationDuration="0.75"
               width="30"
-              visible={true}
+              visible
             />
           </div>
         </div>
