@@ -1,5 +1,3 @@
-// TODO : eslint 오류 해결하기
-/* eslint-disable dot-notation */
 import { useDispatch } from 'react-redux';
 import { SELECT_CATEGORY } from '@/store/slice/selectSlice';
 import categories from '@/utils/const';
@@ -18,7 +16,7 @@ const SelectCategory = () => {
   return (
     <>
       <Title>카테고리 선택</Title>
-      <section className={styles['category__container']}>
+      <section className={styles.category__container}>
         {categories.map((category) => {
           return (
             <Button

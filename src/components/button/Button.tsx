@@ -1,6 +1,3 @@
-// TODO : eslint 오류 해결하기
-/* eslint-disable react/require-default-props */
-
 'use client';
 
 import { ReactNode } from 'react';
@@ -12,7 +9,7 @@ interface IButtonProps {
   shape?: string;
 }
 
-const Button = ({ shape = 'default', children, onClick }: IButtonProps) => {
+const Button = ({ shape, children, onClick }: IButtonProps) => {
   return (
     <button
       type="button"
@@ -22,6 +19,11 @@ const Button = ({ shape = 'default', children, onClick }: IButtonProps) => {
       {children}
     </button>
   );
+};
+
+Button.defaultProps = {
+  onClick: () => {},
+  shape: 'default',
 };
 
 export default Button;
