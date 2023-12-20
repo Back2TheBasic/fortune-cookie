@@ -6,7 +6,7 @@
 
 .question__refresh-btn {
   all: unset;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -15,4 +15,8 @@
   min-width: 100px;
   border-radius: 60px;
   font-size: 1rem;
+
+  &:hover {
+    background: #fff;
+  }
 }

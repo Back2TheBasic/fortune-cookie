@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Provider from '@/store/provider';
+import Loading from '@/components/loading/loading';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,19 +13,22 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Provider>
-      <html lang="ko">
-        <head>
-          <script
-            defer
-            src="https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js"
-            integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4"
-            crossOrigin="anonymous"
-          />
-        </head>
-        <body className={inter.className}>{children}</body>
-      </html>
-    </Provider>
+    <html lang="ko">
+      <head>
+        <script
+          defer
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js"
+          integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className={inter.className}>
+        <Provider>
+          <Loading />
+          {children}
+        </Provider>
+      </body>
+    </html>
   );
 };
 
