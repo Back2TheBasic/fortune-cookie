@@ -1,4 +1,3 @@
-// TODO : eslint 오류 해결하기
 import Link from 'next/link';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
