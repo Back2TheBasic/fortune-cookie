@@ -22,9 +22,8 @@ const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
-    // TODO : eslint 오류 해결하기
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [Kakao]);
+
   return (
     <div className={style.container}>
       <header>
