@@ -1,6 +1,47 @@
-// TODO : eslint 오류 해결하기
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const shareKakao = (Kakao: any) => {
+interface ISendDefaultParams {
+  objectType: string;
+  content: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    link: {
+      mobileWebUrl: string;
+      webUrl: string;
+    };
+  };
+  itemContent: {
+    profileText: string;
+    profileImageUrl: string;
+    titleImageUrl: string;
+    titleImageText: string;
+    titleImageCategory: string;
+    items: {
+      item: string;
+      itemOp: string;
+    }[];
+    sum: string;
+    sumOp: string;
+  };
+  social: {
+    likeCount: number;
+    commentCount: number;
+    sharedCount: number;
+  };
+  buttons: {
+    title: string;
+    link: {
+      mobileWebUrl: string;
+      webUrl: string;
+    };
+  }[];
+}
+interface IKakaoProps {
+  Share: {
+    sendDefault: (params: ISendDefaultParams) => void;
+  };
+}
+
+const shareKakao = (Kakao: IKakaoProps) => {
   return Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
