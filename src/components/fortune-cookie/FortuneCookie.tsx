@@ -14,13 +14,31 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
   const selectedResult = useSelector(selectResult);
   const router = useRouter();
   const dispatch = useDispatch();
-  const kakaoShare = () => {
+  const shareOnKakao = () => {
     shareKakao(Kakao);
   };
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY as string);
   }, [Kakao]);
+
+  // 공유하기 버튼 추가
+  // const shareOnFacebook = () => {
+  //   const url = window.location.href;
+  //   const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+  //     url
+  //   )}`;
+  //   window.open(facebookUrl, 'newwindow', 'width=600, height=400');
+  // };
+
+  // const shareOnTwitter = () => {
+  //   const url = window.location.href;
+  //   const text = '여기에 공유할 텍스트를 넣으세요';
+  //   const twitterUrl = `https://twitter.com/share?url=${encodeURIComponent(
+  //     url
+  //   )}&text=${encodeURIComponent(text)}`;
+  //   window.open(twitterUrl, 'newwindow', 'width=600, height=400');
+  // };
 
   const tryAgain = () => {
     openModal(false);
@@ -56,7 +74,7 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
         </div>
         <div className={style.footer}>
           <Button onClick={tryAgain}>다시하기</Button>
-          <Button onClick={kakaoShare}>카카오</Button>
+          <Button onClick={shareOnKakao}>공유하기</Button>
         </div>
       </div>
     </div>,
