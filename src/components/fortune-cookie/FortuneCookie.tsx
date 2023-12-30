@@ -1,10 +1,11 @@
 import Button from '@/components/button/Button';
 import { useEffect } from 'react';
 import shareKakao from '@/utils/shareKakao';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectResult } from '@/store/slice/resultSlice';
 import ReactDOM from 'react-dom';
 import { useRouter } from 'next/navigation';
+import { SET_LOADING } from '@/store/slice/loadingSlice';
 import style from './FortuneCookie.module.scss';
 
 interface ISelectedConcernProps {
@@ -15,6 +16,7 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
   const { Kakao } = window as any;
   const selectedResult = useSelector(selectResult);
   const router = useRouter();
+  const dispatch = useDispatch();
   const kakaoShare = () => {
     shareKakao(Kakao);
   };
@@ -27,6 +29,16 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
     openModal(false);
     router.push('/');
   };
+
+  useEffect(() => {
+    if (!selectedResult) {
+      console.log('로딩 온!');
+      dispatch(SET_LOADING(true));
+    } else {
+      console.log('로딩 오프!');
+      dispatch(SET_LOADING(false));
+    }
+  }, [selectedResult, dispatch]);
 
   return ReactDOM.createPortal(
     <div className={style.modalBackground}>
