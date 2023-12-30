@@ -6,14 +6,11 @@ import { selectResult } from '@/store/slice/resultSlice';
 import ReactDOM from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { SET_LOADING } from '@/store/slice/loadingSlice';
+import { IKakaoProps, ISelectedConcernProps } from '@/types/interface';
 import style from './FortuneCookie.module.scss';
 
-interface ISelectedConcernProps {
-  openModal: (state: boolean) => void;
-}
-
 const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
-  const { Kakao } = window as any;
+  const { Kakao } = window as unknown as IKakaoProps;
   const selectedResult = useSelector(selectResult);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -22,7 +19,7 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
   };
   useEffect(() => {
     Kakao.cleanup();
-    Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
+    Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY as string);
   }, [Kakao]);
 
   const tryAgain = () => {
@@ -32,10 +29,8 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
 
   useEffect(() => {
     if (!selectedResult) {
-      console.log('로딩 온!');
       dispatch(SET_LOADING(true));
     } else {
-      console.log('로딩 오프!');
       dispatch(SET_LOADING(false));
     }
   }, [selectedResult, dispatch]);
