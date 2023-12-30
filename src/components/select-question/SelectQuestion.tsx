@@ -7,12 +7,13 @@ import Title from '@/components/title/Title';
 import questions from '@/assets/data/questions.json';
 import getFortune from '@/utils/openai';
 import { SAVE_RESULT } from '@/store/slice/resultSlice';
+import type { TCategory } from '@/types/type';
 import styles from './SelectQuestion.module.scss';
 
 const SelectQuestion = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const selectedCategory = useSelector(selectSelectedCategory);
+  const selectedCategory: TCategory = useSelector(selectSelectedCategory);
   const categoryQuestions = questions[selectedCategory];
   const questionsPerPage: number = 5;
   const [questionIndex, setQuestionIndex] = useState(0);
