@@ -1,21 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable dot-notation */
-import Title from '@/components/title/Title';
 import Button from '@/components/button/Button';
 import { useEffect } from 'react';
 import shareKakao from '@/utils/shareKakao';
 import { useSelector } from 'react-redux';
 import { selectResult } from '@/store/slice/resultSlice';
+import ReactDOM from 'react-dom';
+import { useRouter } from 'next/navigation';
 import style from './FortuneCookie.module.scss';
 
 interface ISelectedConcernProps {
-  goback: (index: number) => void;
+  openModal: (state: boolean) => void;
 }
 
-const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
+const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
   const { Kakao } = window as any;
   const selectedResult = useSelector(selectResult);
-
+  const router = useRouter();
   const kakaoShare = () => {
     shareKakao(Kakao);
   };
@@ -24,20 +23,39 @@ const FortuneCookie = ({ goback }: ISelectedConcernProps) => {
     Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
   }, [Kakao]);
 
-  return (
-    <div className={style.container}>
-      <header>
-        <Title>쿠키를 선택해주세요</Title>
-      </header>
-      <form>
-        <p>{selectedResult}</p>
-        <div className={style.button_container}>
-          <Button onClick={goback.bind(this, 0)}>다시하기</Button>
+  const tryAgain = () => {
+    openModal(false);
+    router.push('/');
+  };
+
+  return ReactDOM.createPortal(
+    <div className={style.modalBackground}>
+      <div className={style.modalContainer}>
+        <div className={style.titleCloseBtn}>
+          <button
+            type="button"
+            onClick={() => {
+              openModal(false);
+            }}
+          >
+            X
+          </button>
+        </div>
+        <div className={style.title}>
+          <h1>운세 결과는 다음과 같습니다!</h1>
+        </div>
+        <div className={style.body}>
+          <p>{selectedResult}</p>
+        </div>
+        <div className={style.footer}>
+          <Button onClick={tryAgain}>다시하기</Button>
           <Button onClick={kakaoShare}>카카오</Button>
         </div>
-      </form>
-    </div>
+      </div>
+    </div>,
+
+    document.getElementById('modal-root') as HTMLElement
   );
 };
 
-export default FortuneCookie;
+export default FortuneCookieResult;

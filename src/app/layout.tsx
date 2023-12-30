@@ -23,10 +23,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         />
       </head>
       <body className={inter.className}>
-        <Provider>
-          <Loading />
-          {children}
-        </Provider>
+        <div id="app-root">
+          <Provider>
+            <div id="modal-root" />
+            <Loading />
+            {children}
+          </Provider>
+        </div>
       </body>
     </html>
   );

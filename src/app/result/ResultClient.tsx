@@ -5,17 +5,15 @@ import FortuneCookieResult from '@/components/fortune-cookie/FortuneCookie';
 import FortuneCookieChoice from '@/components/fortune-cookie-choice/FortuneCookieChoice';
 
 const ResultClient = () => {
-  const [selectedCookie, setSelectedCookie] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
   const selectCookie = (cookie: number) => {
-    setSelectedCookie(cookie);
+    const _ = cookie;
+    setModalOpen(true);
   };
   return (
-    <div>
-      {selectedCookie ? (
-        <FortuneCookieResult goback={selectCookie} />
-      ) : (
-        <FortuneCookieChoice selectedCookie={selectCookie} />
-      )}
+    <div id="result-client">
+      <FortuneCookieChoice selectedCookie={selectCookie} />
+      {modalOpen && <FortuneCookieResult openModal={setModalOpen} />}
     </div>
   );
 };

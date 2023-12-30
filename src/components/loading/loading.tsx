@@ -10,7 +10,7 @@ const Loading = () => {
   const isLoading = useSelector(selectIsLoading);
 
   return (
-    <div>
+    <div id="loading">
       {isLoading && (
         <div className={styles.wrapper}>
           <div className={styles.loader}>
