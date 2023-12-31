@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import selectReducer from './slice/selectSlice';
 import resultReducer from './slice/resultSlice';
 import loadingReducer from './slice/loadingSlice';
-import resultReducer from './slice/resultSlice';
 
 const store = configureStore({
   reducer: {
