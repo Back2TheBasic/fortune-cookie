@@ -28,9 +28,11 @@ const SelectQuestion = () => {
   };
 
   const selectQuestion = async (question: string) => {
-    const newData = await getFortune(question);
-    dispatch(SAVE_RESULT(newData as string));
-
+    const fetchFortune = async () => {
+      const newData = await getFortune(question);
+      dispatch(SAVE_RESULT(newData as string));
+    };
+    fetchFortune();
     router.push('/result');
   };
 

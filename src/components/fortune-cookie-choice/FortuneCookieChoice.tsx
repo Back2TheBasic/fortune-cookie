@@ -10,7 +10,6 @@ interface ISelectedCookiesProps {
   selectedCookie: (cookie: number) => void;
 }
 const FortuneCookieChoice = ({ selectedCookie }: ISelectedCookiesProps) => {
-  const _ = selectedCookie;
   const [buttons, setButtons] = useState([
     fortuneCookie,
     fortuneCookie,
@@ -24,6 +23,7 @@ const FortuneCookieChoice = ({ selectedCookie }: ISelectedCookiesProps) => {
     setButtons(
       buttons.map((button, i) => (i === index ? afterFortuneCookie : button))
     );
+    selectedCookie(index);
   };
 
   return (

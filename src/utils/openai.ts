@@ -9,7 +9,8 @@ const getUserContent = (fortune: string) => {
   return `
   아래의 규칙을 지켜서 운세의 결과를 만들어주세요.
   생성해주셔야할 운세 결과의 카테고리는 ${fortune} 입니다.
-  1개의 운세 결과 알려주세요.`;
+  1개의 운세 결과 알려주세요.
+  운세의 길이는 최대 30자 입니다.`;
 };
 
 const getAssistantContent = () => {

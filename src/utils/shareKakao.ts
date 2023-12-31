@@ -1,47 +1,6 @@
-interface ISendDefaultParams {
-  objectType: string;
-  content: {
-    title: string;
-    description: string;
-    imageUrl: string;
-    link: {
-      mobileWebUrl: string;
-      webUrl: string;
-    };
-  };
-  itemContent: {
-    profileText: string;
-    profileImageUrl: string;
-    titleImageUrl: string;
-    titleImageText: string;
-    titleImageCategory: string;
-    items: {
-      item: string;
-      itemOp: string;
-    }[];
-    sum: string;
-    sumOp: string;
-  };
-  social: {
-    likeCount: number;
-    commentCount: number;
-    sharedCount: number;
-  };
-  buttons: {
-    title: string;
-    link: {
-      mobileWebUrl: string;
-      webUrl: string;
-    };
-  }[];
-}
-interface IKakaoProps {
-  Share: {
-    sendDefault: (params: ISendDefaultParams) => void;
-  };
-}
+import { IKakaoShareProps } from '@/types/interface';
 
-const shareKakao = (Kakao: IKakaoProps) => {
+const shareKakao = (Kakao: IKakaoShareProps) => {
   return Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
