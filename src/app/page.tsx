@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
+import { Metadata } from 'next';
 import styles from './page.module.scss';
+
+export const metadata: Metadata = {
+  title: '포춘쿠키',
+};
 
 const Home = () => {
   return (

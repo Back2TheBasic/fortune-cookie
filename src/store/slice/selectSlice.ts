@@ -3,8 +3,8 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { TCategory } from '@/types/type';
 import type { RootState } from '../store';
 
-const initialState = {
-  selectedCategory: '',
+const initialState: { selectedCategory: TCategory } = {
+  selectedCategory: '' as TCategory,
 };
 
 export const selectSlice = createSlice({
