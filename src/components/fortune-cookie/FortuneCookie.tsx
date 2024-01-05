@@ -8,6 +8,10 @@ import { useRouter } from 'next/navigation';
 import { SET_LOADING } from '@/store/slice/loadingSlice';
 import { IKakaoProps, ISelectedConcernProps } from '@/types/interface';
 import { replaceSpacesWithHyphens } from '@/utils/replace';
+import IconButton from '@/components/iconButton/IconButton';
+import facebook from '@/assets/facebook.png';
+import twitter from '@/assets/twitter.png';
+import kakaotalk from '@/assets/kakaotalk.png';
 import style from './FortuneCookie.module.scss';
 
 const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
@@ -63,9 +67,25 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
         <div className={style.body}>
           <p>{selectedResult}</p>
         </div>
-        <div className={style.footer}>
+        <div className={style.tryAgin}>
           <Button onClick={tryAgain}>다시하기</Button>
-          <Button onClick={shareOnKakao}>공유하기</Button>
+        </div>
+        <div className={style.footer}>
+          <IconButton
+            onClick={shareOnFacebook}
+            src={facebook}
+            alt="페이스북 공유하기"
+          />
+          <IconButton
+            onClick={shareOnTwitter}
+            src={twitter}
+            alt="트위터 공유하기"
+          />
+          <IconButton
+            onClick={shareOnKakao}
+            src={kakaotalk}
+            alt="카카오 공유하기 이미지"
+          />
         </div>
       </div>
     </div>,
