@@ -56,19 +56,6 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
   return ReactDOM.createPortal(
     <div className={style.modalBackground}>
       <div className={style.modalContainer}>
-        <div className={style.titleCloseBtn}>
-          <button
-            type="button"
-            onClick={() => {
-              openModal(false);
-            }}
-          >
-            X
-          </button>
-        </div>
-        <div className={style.title}>
-          <h1>운세 결과는 다음과 같습니다!</h1>
-        </div>
         <div className={style.body}>
           <p>{selectedResult}</p>
         </div>
