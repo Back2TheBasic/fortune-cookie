@@ -2,13 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Button from '@/components/button/Button';
 import Title from '@/components/title/Title';
-import { Metadata } from 'next';
 import fortuneCookie from '@/assets/main-fortune-cookie.png';
 import styles from './page.module.scss';
-
-export const metadata: Metadata = {
-  title: '포춘쿠키',
-};
 
 const Home = () => {
   return (
