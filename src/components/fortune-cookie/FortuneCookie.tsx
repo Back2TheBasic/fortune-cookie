@@ -7,6 +7,11 @@ import ReactDOM from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { SET_LOADING } from '@/store/slice/loadingSlice';
 import { IKakaoProps, ISelectedConcernProps } from '@/types/interface';
+import { replaceSpacesWithHyphens } from '@/utils/replace';
+import IconButton from '@/components/iconButton/IconButton';
+import facebook from '@/assets/facebook.png';
+import twitter from '@/assets/twitter.png';
+import kakaotalk from '@/assets/kakaotalk.png';
 import style from './FortuneCookie.module.scss';
 
 const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
@@ -21,24 +26,27 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
     Kakao.cleanup();
     Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY as string);
   }, [Kakao]);
+  const result = replaceSpacesWithHyphens(selectedResult as string);
 
   // 공유하기 버튼 추가
-  // const shareOnFacebook = () => {
-  //   const url = window.location.href;
-  //   const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-  //     url
-  //   )}`;
-  //   window.open(facebookUrl, 'newwindow', 'width=600, height=400');
-  // };
+  const shareOnFacebook = () => {
+    const domain = window.location.origin;
+    const url = `${domain}/share/${result}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      url
+    )}`;
+    window.open(facebookUrl, 'newwindow', 'width=600, height=400');
+  };
 
-  // const shareOnTwitter = () => {
-  //   const url = window.location.href;
-  //   const text = '여기에 공유할 텍스트를 넣으세요';
-  //   const twitterUrl = `https://twitter.com/share?url=${encodeURIComponent(
-  //     url
-  //   )}&text=${encodeURIComponent(text)}`;
-  //   window.open(twitterUrl, 'newwindow', 'width=600, height=400');
-  // };
+  const shareOnTwitter = () => {
+    const domain = window.location.origin;
+    const url = `${domain}/share/${result}`;
+    const text = '나의 오늘 운세 결과를 확인해보세요!';
+    const twitterUrl = `https://twitter.com/share?url=${encodeURIComponent(
+      url
+    )}&text=${encodeURIComponent(text)}`;
+    window.open(twitterUrl, 'newwindow', 'width=600, height=400');
+  };
 
   const tryAgain = () => {
     openModal(false);
@@ -59,9 +67,25 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
         <div className={style.body}>
           <p>{selectedResult}</p>
         </div>
-        <div className={style.footer}>
+        <div className={style.tryAgin}>
           <Button onClick={tryAgain}>다시하기</Button>
-          <Button onClick={shareOnKakao}>공유하기</Button>
+        </div>
+        <div className={style.footer}>
+          <IconButton
+            onClick={shareOnFacebook}
+            src={facebook}
+            alt="페이스북 공유하기"
+          />
+          <IconButton
+            onClick={shareOnTwitter}
+            src={twitter}
+            alt="트위터 공유하기"
+          />
+          <IconButton
+            onClick={shareOnKakao}
+            src={kakaotalk}
+            alt="카카오 공유하기 이미지"
+          />
         </div>
       </div>
     </div>,
