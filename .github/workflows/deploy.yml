@@ -22,7 +22,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [18.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -39,7 +39,7 @@ jobs:
       # Install packages
       - name: Install packages
         run: |
-          npm install
+          npm ci
       # Build an optimized production build
       - name: Setting .env
         run: |
