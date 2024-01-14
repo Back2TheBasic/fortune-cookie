@@ -36,10 +36,6 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
 
-      # Install packages
-      - name: Install packages
-        run: |
-          npm ci
       # Build an optimized production build
       - name: Setting .env
         run: |
@@ -47,10 +43,21 @@ jobs:
           echo "NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY=${{secrets.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}}" >> .env
           cat .env
 
+      # remove before node_modules
+      - name: Remove node_modules & package-lock.json
+        run: |
+          rm -rf node_modules package-lock.json
+
+      # Install packages
+      - name: Install packages
+        run: |
+          npm install --legacy-peer-deps
+
       - name: Production build
         run: |
           unset CI
           npm run build
+
       # Deploy to the S3 server
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
