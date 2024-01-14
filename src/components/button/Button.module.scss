@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: cornflowerblue;
+  background-color: var(--main-color);
   border: none;
   border-radius: 12px;
   color: #000;
@@ -13,12 +13,12 @@
   height: 45px;
   margin: 10px;
   border: none;
-  color: white;
+  color: var(--accent-color);
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
   &:hover {
-    // background-color: var(--accent-color);
+    background-color: var(--accent-color);
     color: #fff;
   }
 
