@@ -21,6 +21,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4"
           crossOrigin="anonymous"
         />
+        <script defer src="https://developers.kakao.com/sdk/js/kakao.js" />
       </head>
       <body className={inter.className}>
         <div id="app-root">

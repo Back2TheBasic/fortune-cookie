@@ -19,14 +19,16 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
   const selectedResult = useSelector(selectResult);
   const router = useRouter();
   const dispatch = useDispatch();
+  const result = replaceSpacesWithHyphens(selectedResult as string);
   const shareOnKakao = () => {
-    shareKakao(Kakao);
+    const domain = window.location.origin;
+    const url = `${domain}/share/${result}`;
+    shareKakao(Kakao, url);
   };
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY as string);
   }, [Kakao]);
-  const result = replaceSpacesWithHyphens(selectedResult as string);
 
   // 공유하기 버튼 추가
   const shareOnFacebook = () => {
