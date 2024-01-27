@@ -20,20 +20,23 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const result = replaceSpacesWithHyphens(selectedResult as string);
-  const shareOnKakao = () => {
-    const domain = window.location.origin;
-    const url = `${domain}/share/${result}`;
-    shareKakao(Kakao, url);
-  };
+
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY as string);
   }, [Kakao]);
 
   // 공유하기 버튼 추가
+  const shareOnKakao = () => {
+    const domain = window.location.origin;
+    const url = `${domain}/share?result=${result}`;
+    // const url = `${domain}/share/${result}`;
+    shareKakao(Kakao, url);
+  };
+
   const shareOnFacebook = () => {
     const domain = window.location.origin;
-    const url = `${domain}/share/${result}`;
+    const url = `${domain}/share?result=${result}`;
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
       url
     )}`;
@@ -42,7 +45,7 @@ const FortuneCookieResult = ({ openModal }: ISelectedConcernProps) => {
 
   const shareOnTwitter = () => {
     const domain = window.location.origin;
-    const url = `${domain}/share/${result}`;
+    const url = `${domain}/share?result=${result}`;
     const text = '나의 오늘 운세 결과를 확인해보세요!';
     const twitterUrl = `https://twitter.com/share?url=${encodeURIComponent(
       url
